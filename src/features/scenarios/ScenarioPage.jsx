@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Card, Button, Alert, ProgressBar } from "react-bootstrap";
+import { Card, Button, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { scenarios } from "../../data/scenarios";
 import { useGameStore } from "../../store/useGameStore";
@@ -9,7 +9,6 @@ export default function ScenarioPage({ id }){
   const { choices, setChoice } = useGameStore();
   const s = useMemo(()=>scenarios.find(x=>x.id===id), [id]);
   const [selected, setSelected] = useState(choices[id]);
-  const progress = Math.round(((id-1)/4)*100);
 
   if(!s) return <p>找不到此情境。</p>;
 
@@ -23,7 +22,6 @@ export default function ScenarioPage({ id }){
   return (
     <div>
       <h2 className="mb-2">{s.title}</h2>
-      <ProgressBar now={progress} label={`${progress}%`} className="mb-3"/>
       <p className="text-muted">{s.prompt}</p>
 
       <div className="d-grid gap-3 my-4">

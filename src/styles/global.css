@@ -6,3 +6,10 @@ body {
   font-family: system-ui, sans-serif;
   background-color: #f8f9fa;
 }
+:root {
+  --bs-primary: #6666FF;
+  --bs-btn-bg: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-hover-bg: #5555ee; 
+  --bs-btn-hover-border-color: #5555ee;
+}

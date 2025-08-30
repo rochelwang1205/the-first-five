@@ -4,11 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "dev": "cross-env SASS_SILENCE_DEPRECATIONS=import,global-builtin,color-functions vite",
+    "build": "cross-env SASS_SILENCE_DEPRECATIONS=import,global-builtin,color-functions vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
@@ -30,6 +30,7 @@
     "@typescript-eslint/eslint-plugin": "^8.41.0",
     "@typescript-eslint/parser": "^8.41.0",
     "@vitejs/plugin-react": "^5.0.0",
+    "cross-env": "^10.0.0",
     "eslint": "^9.34.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
@@ -38,6 +39,7 @@
     "gh-pages": "^6.3.0",
     "globals": "^16.3.0",
     "prettier": "^3.6.2",
+    "sass": "^1.91.0",
     "vite": "^7.1.2",
     "vite-plugin-svgr": "^4.5.0"
   }
