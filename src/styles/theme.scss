@@ -1,14 +1,13 @@
 /* src/styles/theme.scss */
 
-/* 你自己的品牌色（一次全站改色） */
 $primary:   #6666ff;
 $secondary: #6AE5DF;
 $success:   #66CC66;
 $info:      #FFCC33;
 $warning:   #FFCC33;
 $danger:    #ef4444;
-$light:     #f8f9fa;
-$dark:      #111827;
+$light:     #f1f2f2;
+$dark:      #414042;
 
 $theme-colors: (
   "primary":   $primary,
@@ -20,6 +19,8 @@ $theme-colors: (
   "light":     $light,
   "dark":      $dark
 );
+
+
 
 /* ✅ 關鍵：一次 @use 入口檔，並用 with 覆寫 !default 變數
    由 bootstrap 自己處理內部載入順序（functions/variables/maps/mixins/components） */
@@ -34,8 +35,3 @@ $theme-colors: (
   $dark:      $dark,
   $theme-colors: $theme-colors
 );
-
-/* 你的客製樣式（選用） */
-/*
-@use "./global" as *; // 若你把 global.css 換成 SCSS，可以在這裡引入
-*/

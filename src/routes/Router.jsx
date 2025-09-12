@@ -13,7 +13,7 @@ export const router = createHashRouter([
     element: <AppLayout />,
     errorElement: <NotFound />,     // 友善錯誤頁（可選）
     children: [
-      { index: true, element: <HomePage /> },        // 首頁
+      { index: true, element: <HomePage />, handle: { fullBleed: true } },        // 首頁
       { path: "faq", element: <FaqPage /> },        // FAQ 頁面
       { path: "about", element: <AboutPage /> },    // About 頁面
       { path: "scenario/1", element: <ScenarioPage id={1} /> },

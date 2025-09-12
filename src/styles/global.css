@@ -3,9 +3,10 @@
 }
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
-  background-color: #f8f9fa;
+  font-family: "Oswald", sans-serif;
 }
+
+
 :root {
   --bs-primary: #6666FF;
   --bs-btn-bg: var(--bs-primary);
@@ -13,3 +14,70 @@ body {
   --bs-btn-hover-bg: #5555ee; 
   --bs-btn-hover-border-color: #5555ee;
 }
+
+/* font weights */
+.fw-thin {
+  font-weight: 200;
+}
+
+.fw-regular {
+  font-weight: 400;
+}
+
+.fw-semibold {
+  font-weight: 600;
+}
+
+
+/* font sizes */
+.text-128{
+  font-size: 128px;
+}
+
+.text-96{
+  font-size: 96px;
+}
+
+.text-48{
+  font-size: 48px;
+}
+
+.text-32{
+  font-size: 32px;
+}
+
+.text-24{
+  font-size: 24px;
+}
+
+.text-20{
+  font-size: 20px;
+}
+
+/* icons */
+<style>
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+</style>
+
+
+/* footer */
+:root { --footer-h: 72px; } /* 依你的 footer 真實高度調整（含 padding） */
+
+.fullbleed-hero {
+  min-height: calc(100dvh - var(--footer-h)); /* ✅ 滿寬滿高（扣掉 footer） */
+  width: 100%;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  overflow: hidden; /* 防 1-2px 捲軸 */
+}
+
+/* 避免標題/最後元素外距撐高造成出軸 */
+.fullbleed-hero *:first-child { margin-top: 0; }
+.fullbleed-hero *:last-child  { margin-bottom: 0; }

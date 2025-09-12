@@ -2,17 +2,29 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export default function HomePage() {
+  // public 底下的資源請用 BASE_URL 做前綴
+  const bg = `${import.meta.env.BASE_URL}background/desktop/home-1440.png`;
+
   return (
-    <div className="p-3">
-      <h2>Financial Choices：四大新鮮人理財情境</h2>
-      <p className="text-muted">每題三選一，選後立即看到學習重點與回饋。</p>
-      <ul>
-        <li>學貸十字路口：現金流 vs 總成本</li>
-        <li>第一份工作：雇主匹配的「免費錢」</li>
-        <li>第一個租屋選擇：品質、時間與預算</li>
-        <li>意外獎金分配：還債、投資、緊急金</li>
-      </ul>
-      <Button as={Link} to="/scenario/1">開始</Button>
-    </div>
+    <section
+      className="d-flex flex-column justify-content-center align-items-center text-center"
+      style={{
+        minHeight: "100dvh",
+        width: "100%",
+        backgroundImage: `url(${bg})`,
+        backgroundSize: "contain",
+        backgroundPosition: "center top",
+        backgroundRepeat: "repeat",
+        overflow: "hidden",
+      }}
+    >
+      <h1 className="mb-4">
+        After 5 years,<br />I encountered<br />these things...
+      </h1>
+      <Button as={Link} to="/scenario/1" className="d-flex align-items-center">
+        <span className="me-1">START</span>
+        <span className="material-symbols-outlined">arrow_right_alt</span>
+      </Button>
+    </section>
   );
 }
