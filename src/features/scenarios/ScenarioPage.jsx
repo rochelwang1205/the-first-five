@@ -1,63 +1,95 @@
-import { useMemo, useState } from "react";
-import { Card, Button, Alert } from "react-bootstrap";
+import { useMemo, useState, useEffect } from "react";
+import { Row, Col, Card, Button, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { scenarios } from "../../data/scenarios";
 import { useGameStore } from "../../store/useGameStore";
+import { illustrationMap } from "@/assets/illustrations";
 
-export default function ScenarioPage({ id }){
+export default function ScenarioPage({ id }) {
   const navigate = useNavigate();
-  const { choices, setChoice } = useGameStore();
-  const s = useMemo(()=>scenarios.find(x=>x.id===id), [id]);
-  const [selected, setSelected] = useState(choices[id]);
+  const { setChoice } = useGameStore();
 
-  if(!s) return <p>找不到此情境。</p>;
+  const s = useMemo(() => scenarios.find(x => x.id === id), [id]);
+  const [selected, setSelected] = useState(null);
+
+  const total = scenarios.length;
+  const current = id;
+
+  useEffect(() => setSelected(null), [id]);
+
+  if (!s) return <p>Can not find this scenario.</p>;
 
   const handleSubmit = () => {
-    if(!selected) return;
+    if (!selected) return;
     setChoice(id, selected);
-    if(id<4) navigate(`/scenario/${id+1}`);
+    if (id < total) navigate(`/scenario/${id + 1}`);
     else navigate("/summary");
   };
 
+  const imgKey = s.imageKey;
+  const imgSrc = imgKey ? illustrationMap[imgKey] : undefined;
+
   return (
-    <div>
-      <h2 className="mb-2">{s.title}</h2>
-      <p className="text-muted">{s.prompt}</p>
+    <Row className="g-4 my-3">
+      <Col md={6}>
+        <div className="p-5 bg-light rounded h-100">
+          <small className="d-inline-block mb-2 bg-dark px-4 py-2 mb-4 rounded-5 text-light">
+            {current}/{total}
+          </small>
 
-      <div className="d-grid gap-3 my-4">
-        {s.options.map(opt=>(
-          <Card key={opt.key} border={selected===opt.key ? "primary" : "light"} onClick={()=>setSelected(opt.key)} style={{cursor:"pointer"}}>
-            <Card.Body className="d-flex justify-content-between align-items-center">
-              <span><strong>{opt.key}</strong>）{opt.label}</span>
-              {selected===opt.key && <span className="badge bg-primary">已選</span>}
-            </Card.Body>
-          </Card>
-        ))}
-      </div>
+          <div className="d-flex align-items-start gap-3 mb-2">
+            {imgSrc ? (
+              <img src={imgSrc} alt={s.title} style={{ maxWidth: "120px", height: "auto" }} />
+            ) : (
+              <small className="text-muted">（Can not find illustration: {imgKey}）</small>
+            )}
+            <div>
+              <h2 className="mb-2">{s.title}</h2>
+              <p className="mb-0 font-sans">{s.description}</p>
+            </div>
+          </div>
 
-      {!!selected && (
-        <>
-          <Alert variant="info"><strong>即時回饋：</strong>{s.feedback[selected]}</Alert>
-          <Card className="mb-3">
-            <Card.Body>
-              <strong>學習重點：</strong>
-              <ul className="mb-0">{s.learningPoints.map((p,i)=><li key={i}>{p}</li>)}</ul>
-            </Card.Body>
-          </Card>
-          {s.tips?.length>0 && (
-            <Alert variant="secondary">
-              <strong>延伸提示：</strong>
-              <ul className="mb-0">{s.tips.map((t,i)=><li key={i}>{t}</li>)}</ul>
+          <p className="text-24 mb-0 font-sans">{s.prompt}</p>
+
+          {!!selected && (
+            <Alert variant="primary" className="mt-3 mb-0 font-sans">
+              <strong>💡</strong> {s.feedback[selected]}
             </Alert>
           )}
-        </>
-      )}
+        </div>
+      </Col>
 
-      <div className="d-flex gap-2">
-        <Button variant="primary" onClick={handleSubmit} disabled={!selected}>
-          {id<4 ? "下一題" : "前往結局頁"}
-        </Button>
-      </div>
-    </div>
+      {/* 右欄（同樣用內層 wrapper） */}
+      <Col md={6}>
+        <div className="p-4 bg-light rounded h-100 d-flex flex-column">
+          <h2 className="mt-2 mb-4 text-center">Decision</h2>
+          <div className="d-grid gap-3 mb-3 font-sans">
+            {s.options.map(opt => (
+              <Card
+                key={opt.key}
+                border={selected === opt.key ? "primary" : "light"}
+                role="button"
+                tabIndex={0}
+                onClick={() => setSelected(opt.key)}
+                onKeyDown={e => (e.key === "Enter" || e.key === " ") && setSelected(opt.key)}
+                style={{ cursor: "pointer" }}
+              >
+                <Card.Body className="d-flex justify-content-between align-items-center">
+                  <span>
+                    <strong>{opt.key}</strong>）{opt.label}
+                  </span>
+                  {selected === opt.key && <span className="badge bg-primary">selected</span>}
+                </Card.Body>
+              </Card>
+            ))}
+          </div>
+          <div className="mt-auto pt-2 d-flex">
+            <Button className="ms-auto rounded-5 px-4" variant="primary" onClick={handleSubmit} disabled={!selected}>
+              {id < total ? "Next" : "See Summary"}
+            </Button>
+          </div>
+        </div>
+      </Col>
+    </Row>
   );
 }

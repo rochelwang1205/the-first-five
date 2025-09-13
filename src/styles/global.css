@@ -9,11 +9,8 @@ body {
 
 :root {
   --bs-primary: #6666FF;
-  --bs-btn-bg: var(--bs-primary);
-  --bs-btn-border-color: var(--bs-primary);
-  --bs-btn-hover-bg: #5555ee; 
-  --bs-btn-hover-border-color: #5555ee;
 }
+
 /* font */
 .font-sans{
   font-family: 'Noto Sans', sans-serif;
@@ -98,4 +95,24 @@ body {
   @media (max-width: 768px) {
     font-size: 3rem;      /* ≈ 48px */
   }
+}
+/* SummaryPage */
+.fs-hero      { font-size: clamp(28px, 6vw, 96px); }   /* 大標 */
+.fs-section   { font-size: clamp(18px, 3.2vw, 32px); } /* 區塊導言 */
+.fs-lead      { font-size: clamp(16px, 2.2vw, 24px); } /* 區塊內描述 */
+.fs-cardtitle { font-size: clamp(16px, 2.4vw, 20px); } /* 卡片標題 */
+/* 背景圖工具（滿版、置中、依需要換 contain/cover） */
+.bg-cover-center {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.bg-contain-bottom {
+  background-repeat: space;
+  background-position: center bottom;
+  background-size: contain;
+}
+
+.h-screen-section {
+  min-height: clamp(300px, 100dvh, 600px);
 }
