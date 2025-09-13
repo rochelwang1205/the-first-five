@@ -6,6 +6,13 @@ import { fileURLToPath, URL } from 'node:url'
 export default defineConfig({
   base: '/the-first-five/',
   plugins: [react()],
+  resolve: {
+  alias: {
+    "@": fileURLToPath(new URL("./src", import.meta.url)),
+    "@components": fileURLToPath(new URL("./src/components", import.meta.url)),
+    "@layout": fileURLToPath(new URL("./src/components/Layout", import.meta.url)),
+  },
+},
   css: {
     preprocessorOptions: {
       scss: {

@@ -14,7 +14,10 @@ body {
   --bs-btn-hover-bg: #5555ee; 
   --bs-btn-hover-border-color: #5555ee;
 }
-
+/* font */
+.font-sans{
+  font-family: 'Noto Sans', sans-serif;
+}
 /* font weights */
 .fw-thin {
   font-weight: 200;
@@ -65,7 +68,6 @@ body {
 }
 </style>
 
-
 /* footer */
 :root { --footer-h: 72px; } /* 依你的 footer 真實高度調整（含 padding） */
 
@@ -81,3 +83,19 @@ body {
 /* 避免標題/最後元素外距撐高造成出軸 */
 .fullbleed-hero *:first-child { margin-top: 0; }
 .fullbleed-hero *:last-child  { margin-bottom: 0; }
+
+
+/* Homepage */
+.hero-heading {
+  font-weight: 600;       /* fw-semibold */
+  margin-bottom: 1.5rem;  /* mb-4 */
+  font-size: 6rem;        /* ≈ 96px */
+
+  span.text-primary {
+    color: var(--bs-primary);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 3rem;      /* ≈ 48px */
+  }
+}

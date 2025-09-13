@@ -21,7 +21,7 @@ export const router = createHashRouter([
       { path: "scenario/3", element: <ScenarioPage id={3} /> },
       { path: "scenario/4", element: <ScenarioPage id={4} /> },
       { path: "summary", element: <SummaryPage /> },
-      { path: "*", element: <NotFound /> },          // 通配，避免 404 畫面
+      { path: "*", element: <NotFound />, handle: { fullBleed: true } },          // 通配，避免 404 畫面
     ],
   },
 ]);

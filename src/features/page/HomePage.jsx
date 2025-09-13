@@ -1,8 +1,8 @@
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Heading from "@layout/Heading.jsx";
 
 export default function HomePage() {
-  // public 底下的資源請用 BASE_URL 做前綴
   const bg = `${import.meta.env.BASE_URL}background/desktop/home-1440.png`;
 
   return (
@@ -18,9 +18,9 @@ export default function HomePage() {
         overflow: "hidden",
       }}
     >
-      <h1 className="mb-4">
-        After 5 years,<br />I encountered<br />these things...
-      </h1>
+      <Heading className="mb-4 text-96 text-md-48 fw-semibold">
+        After <span className="text-primary">5</span> years,<br />I encountered<br />these things...
+      </Heading>
       <Button as={Link} to="/scenario/1" className="d-flex align-items-center">
         <span className="me-1">START</span>
         <span className="material-symbols-outlined">arrow_right_alt</span>
