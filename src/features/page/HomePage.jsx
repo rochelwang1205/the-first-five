@@ -18,10 +18,10 @@ export default function HomePage() {
         overflow: "hidden",
       }}
     >
-      <Heading className="mb-4 text-96 text-md-48 fw-semibold">
+      <Heading className="mb-4 text-48 text-md-96 fw-semibold">
         After <span className="text-primary">5</span> years,<br />I encountered<br />these things...
       </Heading>
-      <Button as={Link} to="/scenario/1" className="d-flex align-items-center">
+      <Button as={Link} to="/scenario/1" className="btn-outlined d-flex align-items-center">
         <span className="me-1">START</span>
         <span className="material-symbols-outlined">arrow_right_alt</span>
       </Button>

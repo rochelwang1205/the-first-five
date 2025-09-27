@@ -47,13 +47,13 @@ export default function SummaryPage(){
                     <div className="col" key={s.id}>
                       <Card
                         border="none"
-                        className="h-100 text-white p-3 rounded-4"
+                        className="h-100 text-white p-1 p-lg-3 rounded-4"
                         style={{
                           backgroundColor: cardColors[index % cardColors.length],
                           border: "none",
                         }}
                       >
-                        <Card.Body className="m-4">
+                        <Card.Body className="m-2 m-lg-4">
                           <div className="mb-2 text-32 fw-bold">{s.title}</div>
                           <div>
                             {choiceKey ? (
@@ -78,7 +78,7 @@ export default function SummaryPage(){
                 as={Link}
                 to="/"
                 variant="outline-primary"
-                className="d-inline-flex align-items-center justify-content-center border-2 rounded-5 px-4 px-md-5 py-2"
+                className="d-inline-flex align-items-center justify-content-center btn-outlined"
               >
                 <span className="me-1">Restart My Journey</span>
                 <span className="material-symbols-outlined">arrow_right_alt</span>

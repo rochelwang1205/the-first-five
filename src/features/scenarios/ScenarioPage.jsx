@@ -37,25 +37,19 @@ export default function ScenarioPage({ id }) {
             {current}/{total}
           </small>
 
-          <div className="d-flex align-items-start gap-3 mb-2">
+          <div className="d-lg-flex align-items-start d-flex-column gap-3 mb-2">
             {imgSrc ? (
-              <img src={imgSrc} alt={s.title} style={{ maxWidth: "120px", height: "auto" }} />
+              <img src={imgSrc} alt={s.title} style={{ maxWidth: "120px", height: "auto" }} className="d-block d-lg-inline m-auto" />
             ) : (
               <small className="text-muted">（Can not find illustration: {imgKey}）</small>
             )}
             <div>
-              <h2 className="mb-2">{s.title}</h2>
+              <h2 className="mb-2 text-24 text-md-48">{s.title}</h2>
               <p className="mb-0 font-sans">{s.description}</p>
             </div>
           </div>
 
           <p className="text-24 mb-0 font-sans">{s.prompt}</p>
-
-          {!!selected && (
-            <Alert variant="primary" className="mt-3 mb-0 font-sans">
-              <strong>💡</strong> {s.feedback[selected]}
-            </Alert>
-          )}
         </div>
       </Col>
 
@@ -83,9 +77,14 @@ export default function ScenarioPage({ id }) {
               </Card>
             ))}
           </div>
-          <div className="mt-auto pt-2 d-flex">
-            <Button className="ms-auto rounded-5 px-4" variant="primary" onClick={handleSubmit} disabled={!selected}>
-              {id < total ? "Next" : "See Summary"}
+          {!!selected && (
+            <Alert variant="primary" className="mt-3 mb-0 font-sans">
+              <strong>💡</strong> {s.feedback[selected]}
+            </Alert>
+          )}
+          <div className="mb-auto pt-2 d-flex">
+            <Button className="ms-auto btn-outlined d-flex align-items-center" variant="primary" onClick={handleSubmit} disabled={!selected}>
+              {id < total ? "Next" : "See Summary"}<span className="material-symbols-outlined">arrow_right_alt</span>
             </Button>
           </div>
         </div>

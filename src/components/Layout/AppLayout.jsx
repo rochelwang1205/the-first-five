@@ -34,7 +34,7 @@ export default function AppLayout() {
         className={`bg-dark py-4 font-sans fw-regular ${fullBleed ? "position-absolute bottom-0 start-0 end-0" : "mt-auto"}`}
       >
         <Container>
-          <p className="text-center mb-0 text-white">
+          <p className="text-center mb-0 text-white text-12 text-sm-16">
             For educational and informational purposes only.<br/>
             This is not investment advice. You are solely responsible for your own financial decisions.
           </p>

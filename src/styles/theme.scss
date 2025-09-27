@@ -1,37 +1,125 @@
 /* src/styles/theme.scss */
-
-$primary:   #6666ff;
-$secondary: #6AE5DF;
-$success:   #66CC66;
-$info:      #FFCC33;
-$warning:   #FFCC33;
-$danger:    #ef4444;
-$light:     #f1f2f2;
-$dark:      #414042;
-
-$theme-colors: (
-  "primary":   $primary,
-  "secondary": $secondary,
-  "success":   $success,
-  "info":      $info,
-  "warning":   $warning,
-  "danger":    $danger,
-  "light":     $light,
-  "dark":      $dark
+@use "sass:color";
+@use "bootstrap/scss/bootstrap" as * with (
+  $primary:   #6666ff,
+  $secondary: #6AE5DF,
+  $success:   #66CC66,
+  $info:      #FFCC33,
+  $warning:   #FFCC33,
+  $danger:    #ef4444,
+  $light:     #f1f2f2,
+  $dark:      #414042
 );
 
+// Neutral colors
+$neutral-900: #242424;
+$neutral-700: #3f3f3f;
+$neutral-500: #6b6b6b;
+$neutral-300: #c9c9c9;
+$neutral-200: #e5e5e5;
+$neutral-100: #fcfcfc;
 
+/* Font sizes */
+.text-12 { font-size: 12px; }
+.text-16 { font-size: 16px; }
+.text-20 { font-size: 20px; }
+.text-24 { font-size: 24px; }
+.text-48 { font-size: 48px; }
+.text-96 { font-size: 96px; }
+.text-128 { font-size: 128px; }
 
-/* ✅ 關鍵：一次 @use 入口檔，並用 with 覆寫 !default 變數
-   由 bootstrap 自己處理內部載入順序（functions/variables/maps/mixins/components） */
-@use "bootstrap/scss/bootstrap" with (
-  $primary:   $primary,
-  $secondary: $secondary,
-  $success:   $success,
-  $info:      $info,
-  $warning:   $warning,
-  $danger:    $danger,
-  $light:     $light,
-  $dark:      $dark,
-  $theme-colors: $theme-colors
-);
+/* md 以上改字級 */
+@include media-breakpoint-up(md) {
+  .text-md-12 { font-size: 12px !important; }
+  .text-md-16 { font-size: 16px !important; }
+  .text-md-20 { font-size: 20px !important; }
+  .text-md-24 { font-size: 24px !important; }
+  .text-md-48 { font-size: 48px !important; }
+  .text-md-96 { font-size: 96px !important; }
+  .text-md-128 { font-size: 128px !important; }
+}
+
+/* sm 以上改字級 */
+@include media-breakpoint-up(sm) {
+  .text-sm-12 { font-size: 12px !important; }
+  .text-sm-16 { font-size: 16px !important; }
+  .text-sm-20 { font-size: 20px !important; }
+  .text-sm-24 { font-size: 24px !important; }
+  .text-sm-48 { font-size: 48px !important; }
+  .text-sm-96 { font-size: 96px !important; }
+  .text-sm-128 { font-size: 128px !important; }
+}
+/* Button styles */
+.btn { transition: color .18s, background-color .18s, border-color .18s, transform .06s; border-radius: 40px; padding: 0.5rem 2.5rem; border: 3px solid; font-family: 'Noto Sans', sans-serif;}
+.btn:active { transform: translateY(1px); }
+.btn:disabled{ opacity: 0.6; cursor: not-allowed; color: #3f3f3f; background-color: transparent; border: 3px solid #3f3f3f; }
+.btn { -webkit-tap-highlight-color: transparent; }
+
+.btn-filled {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #6666ff;
+  --bs-btn-border-color: #6666ff;
+
+  /* hover/active 一律維持白字 */
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #{color.scale(#6666ff, $lightness: -8%)};
+  --bs-btn-hover-border-color: tranasparent;
+
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #{color.scale(#6666ff, $lightness: -14%)};
+  --bs-btn-active-border-color: tranasparent;
+}
+.btn-outlined {
+  --bs-btn-color: #6666ff;
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: #6666ff;
+
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #6666ff;
+  --bs-btn-hover-border-color: #6666ff;
+
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #{color.scale(#6666ff, $lightness: -10%)};
+  --bs-btn-active-border-color: #{color.scale(#6666ff, $lightness: -12%)};
+}
+
+.btn-black {
+  --bs-btn-color: #{$neutral-900};
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: #{$neutral-500};
+
+  --bs-btn-hover-color: #{$neutral-900};
+  --bs-btn-hover-bg: #{$neutral-100};
+  --bs-btn-hover-border-color: #{$neutral-500};
+
+  --bs-btn-active-color: #{$neutral-900};
+  --bs-btn-active-bg: #{$neutral-200};
+  --bs-btn-active-border-color: #{$neutral-500};
+}
+
+.btn-icon {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+
+  --bs-btn-color: #6AE5DF;
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: #6AE5DF;
+
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #6AE5DF;
+  --bs-btn-hover-border-color: #6AE5DF;
+
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #{color.scale(#6AE5DF, $lightness: -10%)};
+  --bs-btn-active-border-color: #{color.scale(#6AE5DF, $lightness: -12%)};
+
+  svg, i { width: 20px; height: 20px; fill: currentColor; }
+}
+
+/* 尺寸（可選） */
+.btn-sm { border-radius: 2rem; }
+.btn-lg { border-radius: 3rem; }
