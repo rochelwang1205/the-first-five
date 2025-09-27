@@ -16,7 +16,7 @@ export default function SummaryPage(){
 
   return (
     <Container fluid="lg" className="px-3 px-md-4 px-lg-5 py-4 py-md-5">
-      <header className="mb-4 mb-md-5">
+      <header className="mb-4 mb-md-5" data-aos="fade-up" data-aos-duration="1000" data-aos-easing="ease-in-sine">
         <p className="text-center mb-3 text-24 font-sans fw-semibold">
           🎉 Congratulations on Completing Your Journey!
         </p>
@@ -27,7 +27,7 @@ export default function SummaryPage(){
         </p>
       </header>
 
-      <section className="mb-4 mb-md-5">
+      <section className="mb-4 mb-md-5" data-aos="fade-up" data-aos-duration="1000" data-aos-easing="ease-in-sine">
         <Card className="border-0">
           <Card.Body className="p-3 p-md-4 p-lg-5">
             <h3 className="d-block mb-2 fs-hero fw-semibold">
@@ -89,14 +89,14 @@ export default function SummaryPage(){
       </section>
 
       <section className="bg-light rounded-4 p-3 p-md-4 p-lg-5 mb-4 mb-md-5">
-        <header className="mb-3 mb-md-4">
+        <header className="mb-3 mb-md-4" data-aos="fade-up" data-aos-duration="1000" data-aos-easing="ease-in-sine">
           <h2 className="fs-hero fw-semibold mb-2">Continue Your Journey: <br/>Resources &amp; Next Steps</h2>
           <p className="font-sans fs-section mb-0">
             This simulation is just the beginning. Use these trusted resources to continue learning and start building your real-life financial plan.
           </p>
         </header>
 
-        <div className="font-sans">
+        <div className="font-sans" data-aos="fade-up" data-aos-duration="1000" data-aos-easing="ease-in-sine">
           <div className="mb-3">
             <h3 className="text-primary fs-cardtitle">Official Government &amp; Non-Profit Resources</h3>
             <ul className="fs-lead mb-0">
@@ -127,7 +127,7 @@ export default function SummaryPage(){
 
       <section
         className={`h-screen-section d-flex flex-column justify-content-center align-items-center text-center p-4 p-md-0 bg-contain-bottom`}
-        style={{ backgroundImage: `url(${feedbackBg})` }}
+        style={{ backgroundImage: `url(${feedbackBg})` }} data-aos="fade-up" data-aos-duration="1000" data-aos-easing="ease-in-sine"
       >
         <h2 className="fs-hero fw-semibold">Knowledge is the best investment you can make. Good luck!</h2>
       </section>

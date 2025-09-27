@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
+    "aos": "^2.3.4",
     "bootstrap": "^5.3.8",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.542.0",

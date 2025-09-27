@@ -10,7 +10,7 @@ export default function ReminderPage() {
   };
 
   return (
-    <Container className="d-flex justify-content-center align-items-center vh-100">
+    <Container className="d-flex justify-content-center align-items-center vh-100" data-aos="zoom-in">
       <Card className="p-3 p-md-5 rounded-4 shadow-lg w-75" style={{ maxWidth: "800px" }}>
         <h2 className="text-20 text-md-24">😊Friendly Reminder</h2>
         <p className="font-sans my-2 d-none d-md-block text-12 text-sm-16">
