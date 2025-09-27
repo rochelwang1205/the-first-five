@@ -66,9 +66,48 @@ body {
   }
 
   @media (max-width: 768px) {
-    font-size: 3rem;      /* ≈ 48px */
+    font-size: 3rem;      
   }
 }
+.type-multi {
+  display: inline-block;
+  text-align: inherit;
+}
+
+/* 每一行打字 */
+.type-line {
+  display: block;
+  overflow: hidden;                
+  white-space: nowrap;            
+  border-right: .08em solid currentColor;  
+  border-color: transparent;   
+  width: 0;
+  line-height: 1.2;      
+  padding-bottom: .06em;   
+
+  /* 預設參數，可被 inline style 的 CSS 變數覆蓋 */
+  --dur: 300ms;                    /* 打字持續時間 */
+  --delay: 0ms;                     /* 開始前延遲 */
+  --steps: 40;                      /* 每行大致字數 */
+
+  animation:
+    typing var(--dur) steps(var(--steps)) both var(--delay),
+    caret-blink .8s step-end infinite var(--delay),
+    caret-hide 1ms linear both calc(var(--delay) + var(--dur));
+}
+
+.type-line:last-child {
+  animation:
+    typing var(--dur) steps(var(--steps)) both var(--delay),
+    caret-blink .8s step-end infinite var(--delay);
+}
+@keyframes typing   { from { width: 0 } to { width: 100% } }
+@keyframes caret-blink {
+  0%,100% { border-color: transparent; }
+  50%     { border-color: currentColor; }
+}
+@keyframes caret-hide { to { border-color: transparent; } }
+
 /* SummaryPage */
 .fs-hero      { font-size: clamp(28px, 6vw, 96px); }   /* 大標 */
 .fs-section   { font-size: clamp(18px, 3.2vw, 32px); } /* 區塊導言 */
